@@ -5,6 +5,7 @@ descender = 250
 capHeight = 720
 baselineOverShoot = 15
 xHeightOverShoot = 15 
+monospaceWidth = None
 
 
 #Calcs    
@@ -15,6 +16,7 @@ descendente = (descender/10)*2.8346
 mayusculas = (capHeight/10)*2.8346
 baseOvershoot = (baselineOverShoot/10)*2.8346
 xOvershoot = (xHeightOverShoot/10)*2.8346
+if monospaceWidth is not None: monoWidth = (monospaceWidth/10)*2.8346
 
 #Texts
 newPage('A4Landscape')
@@ -27,11 +29,12 @@ text("asc.(" +  str(ascender) + ")", (30, (baseline+ascendente)-2))
 text("cap.(" +  str(capHeight) + ")", (30, (baseline+mayusculas)-2))
 text("desc.(" +  str(descender) + ")", (30, (baseline-descendente)-2))
 text("1cm ≈ 100 upm", (30, 30))
+if monoWidth is not None: text("monospace: " + str(monospaceWidth) + " units", (30, 30))
 
 font("Menlo-Bold")
 text("Project Name:", (30, 540))
 text("Style:", (30, 525))
-text("Wheight:", (30, 510))
+text("Weight:", (30, 510))
 text("Date:", (30, 495))
 
 
@@ -50,6 +53,12 @@ rect(85, baseline-descendente, 730, 0.3)
 
 #cap height
 rect(85, baseline+mayusculas, 730, 0.3)
+
+#monospace guidelines
+if monospaceWidth is not None:
+  padding = (730-85) % monoWidth * 2
+  for i in range((730-85) // monoWidth + 1):
+    rect(85+padding+i*monoWidth, descendente-30, 0.2, 30+descendente+ascendente+30)
 
 #BaselineOvershoot
 fill(1, 0, 0, .2)
