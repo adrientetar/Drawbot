@@ -29,7 +29,7 @@ text("asc.(" +  str(ascender) + ")", (30, (baseline+ascendente)-2))
 text("cap.(" +  str(capHeight) + ")", (30, (baseline+mayusculas)-2))
 text("desc.(" +  str(descender) + ")", (30, (baseline-descendente)-2))
 text("1cm ≈ 100 upm", (30, 30))
-if monoWidth is not None: text("monospace: " + str(monospaceWidth) + " units", (30, 30))
+if monospaceWidth is not None: text("monospace: " + str(monospaceWidth) + " units", (30, 30))
 
 font("Menlo-Bold")
 text("Project Name:", (30, 540))
